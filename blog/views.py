@@ -11,25 +11,25 @@ class PostList(generic.ListView):
 
 
 
-    def post_details(request, slug):
+    def post_detail(request, slug):
         """
-        Display am individual :model:`blog.Post`.
-        
-        **Context** 
+        Display an individual :model:`blog.Post`.
+
+        **Context**
 
         ``post``
-            An instance of :model:`blog.Post`.
+           An instance of :model:`blog.Post`.
 
         **Template:**
 
-        :template:`blog/post_details.html`
+        :template:`blog/post_detail.html`
         """
 
-        queryset = Post.object.filter(status=1)
+        queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
-        return render(
-            request,
-            "blog/post_detail.html",
-            {"post": post},
-        )
+    return render(
+        request,
+        "blog/post_detail.html",
+        {"post": post},
+    )
